@@ -1,0 +1,743 @@
+-- Check total report id present in current date for each report.
+
+SELECT 
+NULL,
+reportType AS report_type_id , 
+COUNT(*) AS total_report_id, 
+reportDate ,
+CURRENT_DATE
+FROM `tbl_ams_report_id`
+ WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+ GROUP BY reportType ,
+reportDate
+ORDER BY 3 ASC
+;
+
+
+
+******************************************************************************************************************************************************************************************
+
+--  calculate the total link present in current date for each report.
+
+SELECT 
+NULL,
+'Adgroup_SB_Link',
+COUNT(*) AS total_link_count,
+reportDate,
+CURRENT_DATE  
+FROM `tbl_ams_adgroup_reports_download_links_sb`
+ WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+ GROUP BY reportDate  
+UNION
+SELECT
+ NULL, 'Adgroup_SD_Link', COUNT(*) AS total_link,reportDate,
+CURRENT_DATE   FROM `tbl_ams_adgroup_reports_download_links_sd` 
+WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+GROUP BY reportDate 
+UNION
+SELECT 
+NULL,
+'Adgroup_SP_Link', 
+COUNT(*)AS total_link,
+reportDate,
+CURRENT_DATE   FROM `tbl_ams_adgroup_reports_download_links_sp` 
+WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+GROUP BY reportDate
+UNION
+SELECT  NULL,
+'Campaigns_SB_Link', COUNT(*) AS total_link,reportDate,
+CURRENT_DATE  
+ FROM `tbl_ams_campaigns_reports_download_links_sb` 
+ WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+ GROUP BY reportDate 
+UNION
+SELECT 
+NULL,
+'Campaigns_SD_Link', COUNT(*) AS total_link,reportDate,
+CURRENT_DATE   FROM `tbl_ams_campaigns_reports_download_links_sd` 
+WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+GROUP BY reportDate 
+UNION
+SELECT 
+NULL,
+'Campaigns_SP_Link', COUNT(*) AS total_link_count,reportDate,
+CURRENT_DATE  FROM `tbl_ams_campaigns_reports_download_links_sp` 
+WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+GROUP BY reportDate 
+UNION
+SELECT NULL, 'Keyword_SB_Link', COUNT(*) AS total_link_count,reportDate,
+CURRENT_DATE   FROM `tbl_ams_keyword_reports_download_links_sb` 
+WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+GROUP BY reportDate  
+UNION
+SELECT NULL ,
+'Keyword_SP_Link', COUNT(*) AS total_link_count,reportDate,
+CURRENT_DATE   FROM `tbl_ams_keyword_reports_download_links_sp` 
+WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+GROUP BY reportDate  
+UNION
+SELECT
+NULL, 
+'Productsads_Link', COUNT(*) AS total_link_count , reportDate,
+CURRENT_DATE   FROM `tbl_ams_productsads_reports_download_links` 
+WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+GROUP BY reportDate 
+UNION
+SELECT NULL, 
+'Productsads_SD_Link', COUNT(*) AS total_link_count,reportDate,
+CURRENT_DATE   FROM `tbl_ams_productsads_reports_download_links_sd` 
+WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+GROUP BY reportDate 
+UNION
+SELECT NULL,
+'Asin_Link', COUNT(*) AS total_link_count, reportDate,
+CURRENT_DATE   FROM `tbl_ams_asin_reports_download_links` 
+WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+GROUP BY reportDate 
+UNION
+SELECT
+NULL, 
+'Targets_Link', COUNT(*) AS total_link_count,reportDate,
+CURRENT_DATE   FROM `tbl_ams_targets_reports_download_links` 
+WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+GROUP BY reportDate 
+UNION
+SELECT NULL,
+'Targets_SB_Link', COUNT(*) AS total_link_count,reportDate,
+CURRENT_DATE 
+  FROM `tbl_ams_targets_reports_download_links_sb` 
+WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+GROUP BY reportDate 
+UNION
+SELECT NULL,'Targets_SD_Link', COUNT(*) AS total_link_count ,reportDate,
+CURRENT_DATE   FROM `tbl_ams_targets_reports_download_links_sd` 
+WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+GROUP BY reportDate
+; 
+
+******************************************************************************************************************************************************************************************
+
+-- Check the duplication of links and failed statuses
+
+
+SELECT NULL, fkAccountId, 'Adgroup_SB_Links'  , STATUS,COUNT(*)
+ AS cnt, reportDate
+FROM `tbl_ams_adgroup_reports_download_links_sb`
+GROUP BY STATUS,fkAccountId,reportDate
+HAVING cnt> 1 
+ OR (cnt = 1 AND STATUS != 'SUCCESS')
+AND DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+UNION
+SELECT NULL, fkAccountId, 'Adgroup_SD_Links' , STATUS,COUNT(*)
+ AS cnt,reportDate
+FROM `tbl_ams_adgroup_reports_download_links_sd`
+GROUP BY STATUS,fkAccountId,reportDate
+HAVING cnt> 1 
+ OR (cnt = 1 AND STATUS != 'SUCCESS')
+AND DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+UNION
+SELECT NULL, fkAccountId,'Adgroup_SP_Links', STATUS,COUNT(*)
+ AS cnt,reportDate
+FROM `tbl_ams_adgroup_reports_download_links_sp`
+GROUP BY STATUS,fkAccountId,reportDate
+HAVING cnt> 1 
+ OR (cnt = 1 AND STATUS != 'SUCCESS')
+AND DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+UNION
+SELECT NULL, fkAccountId, 'Campaign_SB_Links', STATUS,COUNT(*)
+ AS cnt,reportDate
+FROM `tbl_ams_campaigns_reports_download_links_sb`
+GROUP BY STATUS,fkAccountId,reportDate
+HAVING cnt> 1 
+ OR (cnt = 1 AND STATUS != 'SUCCESS')
+AND DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+UNION
+SELECT NULL, fkAccountId, 'Campaign_SD_Links', STATUS,COUNT(*)
+ AS cnt,reportDate
+FROM `tbl_ams_campaigns_reports_download_links_sd`
+GROUP BY STATUS,fkAccountId,reportDate
+HAVING cnt> 1 
+ OR (cnt = 1 AND STATUS != 'SUCCESS')
+AND DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+UNION
+SELECT NULL, fkAccountId,'Campaign_SP_Links', STATUS,COUNT(*)
+ AS cnt ,reportDate
+FROM `tbl_ams_campaigns_reports_download_links_sp`
+GROUP BY STATUS,fkAccountId,reportDate
+HAVING cnt> 1 
+ OR (cnt = 1 AND STATUS != 'SUCCESS')
+AND DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+UNION
+SELECT NULL, fkAccountId,'Keyword_SB_Links' , STATUS,COUNT(*)
+ AS cnt,reportDate
+FROM `tbl_ams_keyword_reports_download_links_sb`
+GROUP BY STATUS,fkAccountId,reportDate
+HAVING cnt> 1 
+ OR (cnt = 1 AND STATUS != 'SUCCESS')
+AND DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+UNION
+SELECT NULL, fkAccountId, 'Keyword_SP_Links', STATUS,COUNT(*)
+ AS cnt ,reportDate
+FROM `tbl_ams_keyword_reports_download_links_sp`
+GROUP BY STATUS,fkAccountId,reportDate
+HAVING cnt> 1 
+ OR (cnt = 1 AND STATUS != 'SUCCESS')
+AND DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+UNION
+SELECT NULL, fkAccountId, 'Productads_Links' , STATUS,COUNT(*)
+ AS cnt,reportDate
+FROM `tbl_ams_productsads_reports_download_links`
+GROUP BY STATUS,fkAccountId,reportDate
+HAVING cnt> 1 
+ OR (cnt = 1 AND STATUS != 'SUCCESS')
+AND DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+UNION
+SELECT NULL, fkAccountId, 'Productads_Links_SD' , STATUS,COUNT(*)
+ AS cnt,reportDate
+FROM `tbl_ams_productsads_reports_download_links_sd`
+GROUP BY STATUS,fkAccountId,reportDate
+HAVING cnt> 1 
+ OR (cnt = 1 AND STATUS != 'SUCCESS')
+AND DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+UNION
+SELECT NULL, fkAccountId,'Target_Links', STATUS,COUNT(*)
+ AS cnt,reportDate
+FROM `tbl_ams_targets_reports_download_links`
+GROUP BY STATUS,fkAccountId,reportDate
+HAVING cnt> 1 
+ OR (cnt = 1 AND STATUS != 'SUCCESS')
+AND DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+UNION
+SELECT NULL, fkAccountId,'Target_SB_Links',STATUS,COUNT(*)
+ AS cnt,reportDate
+FROM `tbl_ams_targets_reports_download_links_sb`
+GROUP BY STATUS,fkAccountId,reportDate
+HAVING cnt> 1 
+ OR (cnt = 1 AND STATUS != 'SUCCESS')
+AND DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+UNION
+SELECT NULL, fkAccountId, 'Target_SD_Links', STATUS,COUNT(*)
+ AS cnt ,reportDate
+FROM `tbl_ams_targets_reports_download_links_sd`
+GROUP BY STATUS,fkAccountId,reportDate
+HAVING cnt> 1 
+ OR (cnt = 1 AND STATUS != 'SUCCESS')
+AND DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+;
+
+
+******************************************************************************************************************************************************************************************
+
+--  if data is duplicated or link is generated but data is not present in table
+
+
+	SELECT
+	NULL,
+	 fkAccountId,
+	 'Adgroup SB Data Duplication',
+	 COUNT(*) AS reptitve_count,
+	 reportDate
+	  FROM
+	(SELECT  fkAccountId ,fkProfileId,campaignId,adgroupId,reportDate, COUNT(fkaccountId) AS cnt
+	FROM `tbl_ams_adgroup_reports_downloaded_data_sb` 
+	WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+	GROUP BY fkAccountId,reportDate,fkProfileId,campaignId,adgroupId
+	HAVING cnt> 1)A 
+	GROUP BY fkAccountId,reportDate
+	UNION
+	SELECT NULL,fkAccountId,'Adgroup SB Data Not Present In Table',COUNT(*)AS reptitve,reportDate FROM `tbl_ams_adgroup_reports_download_links_sb` WHERE fkAccountId NOT IN
+(
+SELECT fkAccountId FROM `tbl_ams_adgroup_reports_downloaded_data_sb` WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+) AND DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d") AND fileSize > 22
+GROUP BY   fkAccountId,reportDate
+UNION
+	SELECT NULL, fkAccountId,'Adgroup SD Data Duplication',COUNT(*) AS reptitve_count,reportDate FROM
+	(SELECT fkAccountId ,fkProfileId,campaignId,adgroupId,reportDate, COUNT(fkaccountId) AS cnt
+	FROM `tbl_ams_adgroup_reports_downloaded_data_sd`
+	WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+	GROUP BY fkAccountId,reportDate,fkProfileId,campaignId,adgroupId
+	HAVING cnt> 1)A 
+	GROUP BY fkAccountId,reportDate
+	UNION
+	SELECT NULL, fkAccountId,'Adgroup SD Data Not Present In Table',COUNT(*)AS reptitve_count,reportDate FROM `tbl_ams_adgroup_reports_download_links_sd` WHERE fkAccountId NOT IN
+(
+SELECT fkAccountId FROM `tbl_ams_adgroup_reports_downloaded_data_sd` WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+) AND DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d") AND fileSize > 22
+GROUP BY   fkAccountId,reportDate
+UNION
+	SELECT NULL ,fkAccountId,'Adgroup SP Data Duplication',COUNT(*) AS reptitve_count,reportDate FROM
+	(SELECT fkAccountId ,fkProfileId,campaignId,adgroupId,reportDate, COUNT(fkaccountId) AS cnt
+	FROM `tbl_ams_adgroup_reports_downloaded_data_sp`
+	WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+	GROUP BY fkAccountId,reportDate,fkProfileId,campaignId,adgroupId
+	HAVING cnt> 1)A 
+	GROUP BY fkAccountId,reportDate
+	UNION
+	SELECT NULL, fkAccountId,'Adgroup SP Data Not Present In Table',COUNT(*)AS reptitve_count,reportDate FROM `tbl_ams_adgroup_reports_download_links_sp` WHERE fkAccountId NOT IN
+(
+SELECT fkAccountId FROM `tbl_ams_adgroup_reports_downloaded_data_sp` WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+) AND DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d") AND fileSize > 22
+GROUP BY   fkAccountId,reportDate
+UNION
+	SELECT NULL, fkAccountId,'Asin Data Duplication',COUNT(*) AS reptitve_count,reportDate FROM
+	(SELECT fkAccountId ,fkProfileId,campaignId,adgroupId,keywordId,ASIN,otherAsin,reportDate, COUNT(fkaccountId) AS cnt
+	FROM `tbl_ams_asin_reports_downloaded_sp`
+	WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d") 
+	GROUP BY fkAccountId,reportDate,fkProfileId,campaignId,adgroupId,keywordId,ASIN,otherAsin
+	HAVING cnt> 1)A 
+	GROUP BY fkAccountId,reportDate
+	UNION
+	SELECT NULL, fkAccountId,'Asin Data Not Present In Table',COUNT(*)AS reptitve_count,reportDate FROM `tbl_ams_asin_reports_download_links` WHERE fkAccountId NOT IN
+(
+SELECT fkAccountId FROM `tbl_ams_asin_reports_downloaded_sp` WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+) AND DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d") AND fileSize > 22
+GROUP BY   fkAccountId,reportDate
+UNION
+	SELECT NULL, fkAccountId,'Campaign SB Data Duplication',COUNT(*) AS reptitve_count,reportDate FROM
+	(SELECT  fkAccountId ,fkProfileId,campaignId,reportDate, COUNT(fkaccountId) AS cnt
+	FROM `tbl_ams_campaigns_reports_downloaded_sb`
+	WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+	GROUP BY fkAccountId,reportDate,fkProfileId,campaignId
+	HAVING cnt> 1)A 
+	GROUP BY fkAccountId,reportDate
+	UNION
+	SELECT NULL, fkAccountId,'Campaign SB Data Not Present In Table',COUNT(*)AS reptitve_count,reportDate FROM `tbl_ams_campaigns_reports_download_links_sb` WHERE fkAccountId NOT IN
+(
+SELECT fkAccountId FROM `tbl_ams_campaigns_reports_downloaded_sb` WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+) AND DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d") AND fileSize > 22
+GROUP BY   fkAccountId,reportDate
+UNION
+	SELECT NULL, fkAccountId,'Campaign SD Data Duplication',COUNT(*) AS reptitve_count,reportDate FROM
+	(SELECT  fkAccountId ,fkProfileId,campaignId,reportDate, COUNT(fkaccountId) AS cnt
+	FROM `tbl_ams_campaigns_reports_downloaded_sd`
+	WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+	GROUP BY fkAccountId,reportDate,fkProfileId,campaignId
+	HAVING cnt> 1)A 
+	GROUP BY fkAccountId,reportDate
+	UNION
+	SELECT NULL,fkAccountId,'Campaign SD Data Not Present In Table',COUNT(*)AS reptitve_count,reportDate FROM `tbl_ams_campaigns_reports_download_links_sd` WHERE fkAccountId NOT IN
+(
+SELECT fkAccountId FROM `tbl_ams_campaigns_reports_downloaded_sd` WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+) AND DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d") AND fileSize > 22
+GROUP BY   fkAccountId,reportDate
+UNION
+	SELECT NULL,fkAccountId,'Campaign SP Data Duplication',COUNT(*) AS reptitve_count,reportDate FROM
+	(SELECT  fkAccountId ,fkProfileId,campaignId,reportDate, COUNT(fkaccountId) AS cnt
+	FROM `tbl_ams_campaigns_reports_downloaded_sp`
+	WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+	GROUP BY fkAccountId,reportDate,fkProfileId,campaignId
+	HAVING cnt> 1)A 
+	GROUP BY fkAccountId,reportDate
+	UNION
+	SELECT NULL, fkAccountId,'Campaign SP Data Not Present In Table',COUNT(*)AS reptitve_count,reportDate FROM `tbl_ams_campaigns_reports_download_links_sp` WHERE fkAccountId NOT IN
+(
+SELECT fkAccountId FROM `tbl_ams_campaigns_reports_downloaded_sp` WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+) AND DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d") AND fileSize > 22
+GROUP BY   fkAccountId,reportDate
+UNION
+	SELECT NULL,fkAccountId,'Keyword SB Data Duplication',COUNT(*) AS reptitve_count,reportDate FROM
+	(SELECT  fkAccountId ,fkProfileId,campaignId,adgroupId,keywordId,reportDate, COUNT(fkaccountId) AS cnt
+	FROM `tbl_ams_keyword_reports_downloaded_data_sb`
+	WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+	GROUP BY fkAccountId,reportDate,fkProfileId,campaignId,adgroupId,keywordId
+	HAVING cnt> 1)A 
+	GROUP BY fkAccountId,reportDate
+	UNION
+	SELECT NULL, fkAccountId,'Keyword SB Data Not Present In Table',COUNT(*)AS reptitve_count,reportDate FROM `tbl_ams_keyword_reports_download_links_sb` WHERE fkAccountId NOT IN
+(
+SELECT fkAccountId FROM `tbl_ams_keyword_reports_downloaded_data_sb` WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+) AND DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d") AND fileSize > 22
+GROUP BY   fkAccountId,reportDate
+UNION
+	SELECT NULL, fkAccountId,'Keyword SP Data Duplication',COUNT(*) AS reptitve_count,reportDate FROM
+	(SELECT  fkAccountId ,fkProfileId,campaignId,adgroupId,keywordId,reportDate, COUNT(fkaccountId) AS cnt
+	FROM `tbl_ams_keyword_reports_downloaded_data_sp`
+	WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+	GROUP BY fkAccountId,reportDate,fkProfileId,campaignId,adgroupId,keywordId
+	HAVING cnt> 1)A 
+	GROUP BY fkAccountId,reportDate
+	UNION
+	SELECT NULL, fkAccountId,'Keyword SP Data Not Present In Table',COUNT(*)AS reptitve_count,reportDate FROM `tbl_ams_keyword_reports_download_links_sp` WHERE fkAccountId NOT IN
+(
+SELECT fkAccountId FROM `tbl_ams_keyword_reports_downloaded_data_sp` WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+) AND DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d") AND fileSize > 22
+GROUP BY   fkAccountId,reportDate
+UNION
+	SELECT NULL,fkAccountId,'Productads Data Duplication',COUNT(*) AS reptitve_count,reportDate FROM
+	(SELECT '`tbl_ams_productsads_reports_downloaded_data`', fkAccountId ,fkProfileId,campaignId,adgroupId,adId,reportDate, COUNT(fkaccountId) AS cnt
+	FROM `tbl_ams_productsads_reports_downloaded_data`
+	GROUP BY fkAccountId,reportDate,fkProfileId,campaignId,adgroupId,adId
+	HAVING cnt> 1)A 
+	GROUP BY fkAccountId,reportDate
+	UNION
+	SELECT NULL,fkAccountId,'Productads Data Not Present In Table',COUNT(*)AS reptitve_count,reportDate FROM `tbl_ams_productsads_reports_download_links` WHERE fkAccountId NOT IN
+(
+SELECT fkAccountId FROM `tbl_ams_productsads_reports_downloaded_data` WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+) AND DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d") AND fileSize > 22
+GROUP BY   fkAccountId,reportDate
+UNION
+	SELECT NULL,fkAccountId,'Productads SD Data Duplication',COUNT(*) AS reptitve_count,reportDate FROM
+	(SELECT  fkAccountId ,fkProfileId,campaignId,adgroupId,ASIN,sku,reportDate, COUNT(fkaccountId) AS cnt
+	FROM `tbl_ams_productsads_reports_downloaded_data_sd`
+	WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d") 
+	GROUP BY fkAccountId,reportDate,fkProfileId,campaignId,adgroupId,ASIN,sku
+	HAVING cnt> 1)A 
+	GROUP BY fkAccountId,reportDate
+	UNION
+	SELECT NULL, fkAccountId,'Productads SD Data Not Present In Table',COUNT(*)AS reptitve_count,reportDate FROM `tbl_ams_productsads_reports_download_links_sd` WHERE fkAccountId NOT IN
+(
+SELECT fkAccountId FROM `tbl_ams_productsads_reports_downloaded_data_sd` WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+) AND DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d") AND fileSize > 22
+GROUP BY   fkAccountId,reportDate
+UNION
+	SELECT NULL, fkAccountId,'Target Data Duplication',COUNT(*) AS reptitve_count,reportDate FROM
+	(SELECT fkAccountId ,fkProfileId,campaignId,targetId,reportDate, COUNT(fkaccountId) AS cnt
+	FROM `tbl_ams_targets_reports_downloaded_data`
+	WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d") 
+	GROUP BY fkAccountId,reportDate,fkProfileId,campaignId,targetId
+	HAVING cnt> 1)A 
+	GROUP BY fkAccountId,reportDate
+	UNION
+	SELECT NULL, fkAccountId,'Target Data Not Present In Table',COUNT(*)AS reptitve_count,reportDate FROM `tbl_ams_targets_reports_download_links` WHERE fkAccountId NOT IN
+(
+SELECT fkAccountId FROM `tbl_ams_targets_reports_downloaded_data` WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+) AND DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d") AND fileSize > 22
+GROUP BY   fkAccountId,reportDate
+UNION
+	SELECT NULL, fkAccountId,'Target SB Data Duplication',COUNT(*) AS reptitve_count,reportDate FROM
+	(SELECT fkAccountId ,fkProfileId,campaignId,targetId,reportDate, COUNT(fkaccountId) AS cnt
+	FROM `tbl_ams_targets_reports_downloaded_data_sb`
+	WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d") 
+	GROUP BY fkAccountId,reportDate,fkProfileId,campaignId,targetId
+	HAVING cnt> 1)A 
+	GROUP BY fkAccountId,reportDate
+	UNION
+	SELECT NULL,fkAccountId,'Target SB Data Not Present In Table',COUNT(*)AS reptitve_count,reportDate FROM `tbl_ams_targets_reports_download_links_sb` WHERE fkAccountId NOT IN
+(
+SELECT fkAccountId FROM `tbl_ams_targets_reports_downloaded_data_sb` WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+) AND DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d") AND fileSize > 22
+GROUP BY   fkAccountId,reportDate
+UNION
+	SELECT NULL,fkAccountId,'Target SD Data Duplication',COUNT(*) AS reptitve_count,reportDate FROM
+	(SELECT fkAccountId ,fkProfileId,campaignId,targetId,reportDate, COUNT(fkaccountId) AS cnt
+	FROM `tbl_ams_targets_reports_downloaded_data_sd`
+	WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d") 
+	GROUP BY fkAccountId,reportDate,fkProfileId,campaignId,targetId
+	HAVING cnt> 1)A 
+	GROUP BY fkAccountId,reportDate
+	UNION
+	SELECT NULL,fkAccountId,'Target SD Data Not Present In Table',COUNT(*)AS reptitve_count,reportDate FROM `tbl_ams_targets_reports_download_links_sd` WHERE fkAccountId NOT IN
+(
+SELECT fkAccountId FROM `tbl_ams_targets_reports_downloaded_data_sd` WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+) AND DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d") AND fileSize > 22
+GROUP BY   fkAccountId,reportDate
+
+;
+
+******************************************************************************************************************************************************************************************
+--  tell which profile of report type is not present in report id table which report id should be generated 
+SELECT
+NULL,
+ t4.`id` AS Account_id
+ ,t4.`fkId`AS Profile_id
+,t3.reportType
+,2022-03-06
+FROM 
+(SELECT
+t2.`fkAccountId`,
+t2.`reportType`
+FROM
+(SELECT
+`profileID`,
+`reportType`,
+CONCAT(`profileID`,`reportType`) AS id1
+FROM 
+`tbl_ams_report_id`
+WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT(2022-03-06,"%Y-%m-%d")
+GROUP BY 1,2,3
+)t1
+RIGHT JOIN
+(SELECT
+a.`fkAccountId`,
+a.`reportType`
+,CONCAT(a.`profileID`,a.`reportType`) AS id2
+FROM 
+`tbl_ams_report_id` a
+JOIN `tbl_ams_profiles` b
+ON a.`profileID`=b.`profileId`
+WHERE b.isActive = 1
+AND b.type !='agency'
+AND countrycode !='MX'
+AND DATE_FORMAT(LEFT(b.creationDate,10),"%Y-%m-%d") <=DATE_FORMAT(2022-03-06,"%Y-%m-%d")
+GROUP BY 1,2,3
+)t2
+ON (t1.id1 = t2.id2)
+WHERE t1.id1 IS NULL)t3
+JOIN 
+(SELECT `id`,`fkId` FROM `tbl_account`)t4
+ON t3.`fkAccountId`= t4.`id`
+ UNION
+ SELECT
+NULL,
+ t4.`id` AS Account_id
+ ,t4.`fkId`AS Profile_id
+,t3.reportType
+,2022-03-06
+FROM 
+(SELECT
+t2.`fkAccountId`,
+t2.`reportType`
+FROM
+(SELECT
+`profileID`,
+`reportType`,
+CONCAT(`profileID`,`reportType`) AS id1
+FROM 
+`tbl_ams_report_id`
+WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT(2022-03-06,"%Y-%m-%d")
+GROUP BY 1,2,3
+)t1
+RIGHT JOIN
+(SELECT
+a.`fkAccountId`,
+a.`reportType`
+,CONCAT(a.`profileID`,a.`reportType`) AS id2
+FROM 
+`tbl_ams_report_id` a
+JOIN `tbl_ams_profiles` b
+ON a.`profileID`=b.`profileId`
+WHERE b.isActive = 1
+AND b.type !='agency'
+AND DATE_FORMAT(LEFT(b.creationDate,10),"%Y-%m-%d") <=DATE_FORMAT(2022-03-06,"%Y-%m-%d")
+GROUP BY 1,2,3
+)t2
+ON (t1.id1 = t2.id2)
+WHERE t1.id1 IS NULL)t3
+JOIN 
+(SELECT `id`,`fkId` FROM `tbl_account`)t4
+ON t3.`fkAccountId`= t4.`id`
+
+-------------------------------------------------------------------------------------------------------------------------
+--  check which profiles reports not generated
+
+ SELECT
+NULL,
+ t4.`id` AS Account_id
+ ,t4.`fkId`AS Profile_id
+,t3.reportType
+,'20220226'
+FROM 
+(SELECT
+t2.`fkAccountId`,
+t2.`reportType`
+FROM
+(SELECT
+`profileID`,
+`reportType`,
+CONCAT(`profileID`,`reportType`) AS id1
+FROM 
+`tbl_ams_report_id`
+WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('20220226',"%Y-%m-%d")
+GROUP BY 1,2,3
+)t1
+RIGHT JOIN
+(SELECT
+a.`fkAccountId`,
+a.`reportType`
+,CONCAT(a.`profileID`,a.`reportType`) AS id2
+FROM 
+`tbl_ams_report_id` a
+JOIN `tbl_ams_profiles` b
+ON a.`profileID`=b.`profileId`
+WHERE b.isActive = 1
+AND b.type !='agency'
+AND countrycode !='MX'
+AND DATE_FORMAT(LEFT(b.creationDate,10),"%Y-%m-%d") <=DATE_FORMAT('20220226',"%Y-%m-%d")
+GROUP BY 1,2,3
+)t2
+ON (t1.id1 = t2.id2)
+WHERE t1.id1 IS NULL)t3
+JOIN 
+(SELECT `id`,`fkId` FROM `tbl_account`)t4
+ON t3.`fkAccountId`= t4.`id`
+ UNION
+ SELECT
+NULL,
+ t4.`id` AS Account_id
+ ,t4.`fkId`AS Profile_id
+,t3.reportType
+,'20220226'
+FROM 
+(SELECT
+t2.`fkAccountId`,
+t2.`reportType`
+FROM
+(SELECT
+`profileID`,
+`reportType`,
+CONCAT(`profileID`,`reportType`) AS id1
+FROM 
+`tbl_ams_report_id`
+WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('20220226',"%Y-%m-%d")
+GROUP BY 1,2,3
+)t1
+RIGHT JOIN
+(SELECT
+a.`fkAccountId`,
+a.`reportType`
+,CONCAT(a.`profileID`,a.`reportType`) AS id2
+FROM 
+`tbl_ams_report_id` a
+JOIN `tbl_ams_profiles` b
+ON a.`profileID`=b.`profileId`
+WHERE b.isActive = 1
+AND b.type !='agency'
+AND DATE_FORMAT(LEFT(b.creationDate,10),"%Y-%m-%d") <=DATE_FORMAT('20220226',"%Y-%m-%d")
+GROUP BY 1,2,3
+)t2
+ON (t1.id1 = t2.id2)
+WHERE t1.id1 IS NULL)t3
+JOIN 
+(SELECT `id`,`fkId` FROM `tbl_account`)t4
+ON t3.`fkAccountId`= t4.`id`
+;
+
+---------------------------------------check errors in reports----------------------------------------
+
+SELECT * FROM `tbl_ams_report_id` WHERE reportDate = "20220226" AND reportType="Product_Targeting"  
+AND (`fkBatchId` NOT IN (SELECT `fkBatchId` FROM `tbl_ams_targets_reports_download_links` WHERE reportDate = "20220226"));
+
+-----------------------------------------------------------
+SELECT * FROM `tbl_ams_profile_report_status` WHERE created_at LIKE "%2022-03-06%" AND batchId LIKE "%20220226%" AND `status`!=1 batchId = "20220226649" AND adType = "AdGroup_SP"
+SELECT * FROM `tbl_ams_profile_report_status` WHERE created_at LIKE "%2022-03-06%" AND `status`!=1
+
+-------------------------- select isDone = "0" that found in report ids but not in report links --------------------------------------------
+
+(SELECT * FROM `tbl_ams_report_id` WHERE reportDate = "20220226" AND reportType="AdGroup_SB"  AND isDone="1"
+AND (`fkBatchId` NOT IN (SELECT `fkBatchId` FROM `tbl_ams_adgroup_reports_download_links_sb` WHERE reportDate = "20220226"))
+)
+UNION 
+(
+SELECT * FROM `tbl_ams_report_id` WHERE reportDate = "20220226" AND reportType="AdGroup_SD"  
+AND (`fkBatchId` NOT IN (SELECT `fkBatchId` FROM `tbl_ams_adgroup_reports_download_links_sd` WHERE reportDate = "20220226"))
+)
+UNION 
+(
+SELECT * FROM `tbl_ams_report_id` WHERE reportDate = "20220226" AND reportType="AdGroup_SP"  
+AND (`fkBatchId` NOT IN (SELECT `fkBatchId` FROM `tbl_ams_adgroup_reports_download_links_sp` WHERE reportDate = "20220226"))
+)
+UNION 
+(
+SELECT * FROM `tbl_ams_report_id` WHERE reportDate = "20220226" AND reportType="ASINs"  
+AND (`fkBatchId` NOT IN (SELECT `fkBatchId` FROM `tbl_ams_asin_reports_download_links` WHERE reportDate = "20220226"))
+)
+UNION 
+(
+SELECT * FROM `tbl_ams_report_id` WHERE reportDate = "20220226" AND reportType="Campaign_SB"  
+AND (`fkBatchId` NOT IN (SELECT `fkBatchId` FROM `tbl_ams_campaigns_reports_download_links_sb` WHERE reportDate = "20220226"))
+)
+UNION 
+(
+SELECT * FROM `tbl_ams_report_id` WHERE reportDate = "20220226" AND reportType="Campaign_SD"  
+AND (`fkBatchId` NOT IN (SELECT `fkBatchId` FROM `tbl_ams_campaigns_reports_download_links_sd` WHERE reportDate = "20220226"))
+)
+UNION 
+(
+SELECT * FROM `tbl_ams_report_id` WHERE reportDate = "20220226" AND reportType="Campaign_SP"  
+AND (`fkBatchId` NOT IN (SELECT `fkBatchId` FROM `tbl_ams_campaigns_reports_download_links_sp` WHERE reportDate = "20220226"))
+)
+UNION 
+(
+SELECT * FROM `tbl_ams_report_id` WHERE reportDate = "20220226" AND reportType="Keyword_SB"  
+AND (`fkBatchId` NOT IN (SELECT `fkBatchId` FROM `tbl_ams_keyword_reports_download_links_sb` WHERE reportDate = "20220226"))
+)
+UNION 
+(
+SELECT * FROM `tbl_ams_report_id` WHERE reportDate = "20220226" AND reportType="Keyword_SP"  
+AND (`fkBatchId` NOT IN (SELECT `fkBatchId` FROM `tbl_ams_keyword_reports_download_links_sp` WHERE reportDate = "20220226"))
+)
+UNION 
+(
+SELECT * FROM `tbl_ams_report_id` WHERE reportDate = "20220226" AND reportType="Product_Ads"  
+AND (`fkBatchId` NOT IN (SELECT `fkBatchId` FROM `tbl_ams_productsads_reports_download_links` WHERE reportDate = "20220226"))
+)
+UNION 
+(
+SELECT * FROM `tbl_ams_report_id` WHERE reportDate = "20220226" AND reportType="SD_Product_Ads"  
+AND (`fkBatchId` NOT IN (SELECT `fkBatchId` FROM `tbl_ams_productsads_reports_download_links_sd` WHERE reportDate = "20220226"))
+)
+UNION 
+(
+SELECT * FROM `tbl_ams_report_id` WHERE reportDate = "20220226" AND reportType="Product_Targeting"  
+AND (`fkBatchId` NOT IN (SELECT `fkBatchId` FROM `tbl_ams_targets_reports_download_links` WHERE reportDate = "20220226"))
+)
+UNION 
+(
+SELECT * FROM `tbl_ams_report_id` WHERE reportDate = "20220226" AND reportType="Product_Targeting_SB"  
+AND (`fkBatchId` NOT IN (SELECT `fkBatchId` FROM `tbl_ams_targets_reports_download_links_sb` WHERE reportDate = "20220226"))
+)
+UNION 
+(
+SELECT * FROM `tbl_ams_report_id` WHERE reportDate = "20220226" AND reportType="Product_Targeting_SD"  
+AND (`fkBatchId` NOT IN (SELECT `fkBatchId` FROM `tbl_ams_targets_reports_download_links_sd` WHERE reportDate = "20220226"))
+)
+
+;
+
+-------------------------------------------------------------------------------------
+SELECT COUNT(id) FROM `tbl_ams_profiles` WHERE isActive = "1"
+
+-------------------------------------- errors -------------------------------------------------
+SELECT tbl_ams_profile_report_status.profileId , tbl_ams_profiles.name , tbl_ams_profile_report_status.adType 
+ , tbl_ams_profile_report_status.status , tbl_ams_profile_report_status.error_description
+ FROM `tbl_ams_profile_report_status` 
+ LEFT JOIN `tbl_ams_profiles`   ON tbl_ams_profile_report_status.profileId =  tbl_ams_profiles.profileId
+ WHERE created_at LIKE "%2022-03-06%" AND batchId LIKE "%20220226%" AND tbl_ams_profile_report_status.reportType = "report_id" AND tbl_ams_profile_report_status.status IN ('3','4')
+
+---------
+SELECT tbl_ams_profile_report_status.profileId , tbl_ams_profiles.name , tbl_ams_profile_report_status.adType  
+ , tbl_ams_profile_report_status.status , tbl_ams_profile_report_status.error_description , tbl_ams_profile_report_status.created_at
+ FROM `tbl_ams_profile_report_status` 
+ LEFT JOIN `tbl_ams_profiles`   ON tbl_ams_profile_report_status.profileId =  tbl_ams_profiles.profileId
+ WHERE created_at LIKE "%2022-03-06%" AND batchId LIKE "%20211107%" AND tbl_ams_profile_report_status.reportType = "report_id" AND tbl_ams_profile_report_status.status!="1"  
+AND  tbl_ams_profile_report_status.status !="3"  AND  tbl_ams_profile_report_status.status !="4"  
+  IN ('3','4')
+
+SELECT DISTINCT error_description FROM  tbl_ams_profile_report_status
+WHERE created_at LIKE "%2021-11-07%" AND batchId LIKE "%20211106%" AND tbl_ams_profile_report_status.reportType = "report_id" AND tbl_ams_profile_report_status.status!="1" AND  tbl_ams_profile_report_status.status IN ('10')
+
+--------------------------------------------
+SELECT * FROM  tbl_ams_profile_report_status 
+ WHERE (created_at > "2022-03-06 00:00:00" && created_at < "2022-03-06 23:59:59" ) AND tbl_ams_profile_report_status.reportType = "report_id" AND tbl_ams_profile_report_status.status ="4";
+
+----------------------------------------------------------------------------------------
+SELECT * FROM  tbl_ams_profile_report_status 
+ WHERE (created_at > "2022-03-06 00:00:00" && created_at < "2022-03-06 23:59:59" ) AND tbl_ams_profile_report_status.reportType = "report_id"
+ AND adType IN ("AdGroup_SP") AND tbl_ams_profile_report_status.status  IN ("3","4") AND batchId = "20211203879" ORDER BY batchId;
+779,247,292,295,298 
+779,209,292,295,298 
+
+"Campaign_SP","Product_Targeting","AdGroup_SP","Keyword_SP"
+
+------------------------------------------------------ check profiles query -------------------------------------------------
+1-fOR SD
+SELECT DISTINCT(profileId), `name` FROM `tbl_ams_profiles` WHERE  isActive = 1 AND marketplaceStringId != "A1AM78C64UM0Y8" AND `type` !="agency"  AND id IN
+(
+SELECT DISTINCT(fkId) FROM `tbl_account` WHERE fkAccountType = 1
+);
+2-For Non SD
+SELECT fkAccountId FROM `tbl_ams_targets_reports_downloaded_data_sd` WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d")
+) AND DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('2022-03-06',"%Y-%m-%d") AND fileSize > 22
+GROUP BY   fkAccountId,reportDate
+;
+------------------------------------------------------------------------------------------------------------------------------
+SELECT * FROM  tbl_ams_profile_report_status 
+ WHERE (created_at > "2022-01-05 00:00:00" && created_at < "2022-01-05 23:59:59" ) AND tbl_ams_profile_report_status.reportType = "report_id"
+ AND adType IN ("AdGroup_SD") AND tbl_ams_profile_report_status.status  IN ("3","4");
+SELECT * FROM  tbl_ams_profile_report_status 
+ WHERE (created_at > "2021-01-04 00:00:00" && created_at < "2021-01-04 23:59:59" ) AND tbl_ams_profile_report_status.reportType = "report_id" AND tbl_ams_profile_report_status.status =10;
+
+
+
+
+

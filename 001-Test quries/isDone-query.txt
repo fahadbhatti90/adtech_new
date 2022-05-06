@@ -1,0 +1,72 @@
+-------------------------- select isDone = "0" that found in report ids but not in report links --------------------------------------------
+
+(SELECT * FROM `tbl_ams_report_id` WHERE reportDate = "20210914" AND reportType="AdGroup_SB"  AND isDone="1"
+AND (`fkBatchId` NOT IN (SELECT `fkBatchId` FROM `tbl_ams_adgroup_reports_download_links_sb` WHERE reportDate = "20210914"))
+)
+UNION 
+(
+SELECT * FROM `tbl_ams_report_id` WHERE reportDate = "20210914" AND reportType="AdGroup_SD"  
+AND (`fkBatchId` NOT IN (SELECT `fkBatchId` FROM `tbl_ams_adgroup_reports_download_links_sd` WHERE reportDate = "20210914"))
+)
+UNION 
+(
+SELECT * FROM `tbl_ams_report_id` WHERE reportDate = "20210914" AND reportType="AdGroup_SP"  
+AND (`fkBatchId` NOT IN (SELECT `fkBatchId` FROM `tbl_ams_adgroup_reports_download_links_sp` WHERE reportDate = "20210914"))
+)
+UNION 
+(
+SELECT * FROM `tbl_ams_report_id` WHERE reportDate = "20210914" AND reportType="ASINs"  
+AND (`fkBatchId` NOT IN (SELECT `fkBatchId` FROM `tbl_ams_asin_reports_download_links` WHERE reportDate = "20210914"))
+)
+UNION 
+(
+SELECT * FROM `tbl_ams_report_id` WHERE reportDate = "20210914" AND reportType="Campaign_SB"  
+AND (`fkBatchId` NOT IN (SELECT `fkBatchId` FROM `tbl_ams_campaigns_reports_download_links_sb` WHERE reportDate = "20210914"))
+)
+UNION 
+(
+SELECT * FROM `tbl_ams_report_id` WHERE reportDate = "20210914" AND reportType="Campaign_SD"  
+AND (`fkBatchId` NOT IN (SELECT `fkBatchId` FROM `tbl_ams_campaigns_reports_download_links_sd` WHERE reportDate = "20210914"))
+)
+UNION 
+(
+SELECT * FROM `tbl_ams_report_id` WHERE reportDate = "20210914" AND reportType="Campaign_SP"  
+AND (`fkBatchId` NOT IN (SELECT `fkBatchId` FROM `tbl_ams_campaigns_reports_download_links_sp` WHERE reportDate = "20210914"))
+)
+UNION 
+(
+SELECT * FROM `tbl_ams_report_id` WHERE reportDate = "20210914" AND reportType="Keyword_SB"  
+AND (`fkBatchId` NOT IN (SELECT `fkBatchId` FROM `tbl_ams_keyword_reports_download_links_sb` WHERE reportDate = "20210914"))
+)
+UNION 
+(
+SELECT * FROM `tbl_ams_report_id` WHERE reportDate = "20210914" AND reportType="Keyword_SP"  
+AND (`fkBatchId` NOT IN (SELECT `fkBatchId` FROM `tbl_ams_keyword_reports_download_links_sp` WHERE reportDate = "20210914"))
+)
+UNION 
+(
+SELECT * FROM `tbl_ams_report_id` WHERE reportDate = "20210914" AND reportType="Product_Ads"  
+AND (`fkBatchId` NOT IN (SELECT `fkBatchId` FROM `tbl_ams_productsads_reports_download_links` WHERE reportDate = "20210914"))
+)
+UNION 
+(
+SELECT * FROM `tbl_ams_report_id` WHERE reportDate = "20210914" AND reportType="SD_Product_Ads"  
+AND (`fkBatchId` NOT IN (SELECT `fkBatchId` FROM `tbl_ams_productsads_reports_download_links_sd` WHERE reportDate = "20210914"))
+)
+UNION 
+(
+SELECT * FROM `tbl_ams_report_id` WHERE reportDate = "20210914" AND reportType="Product_Targeting"  
+AND (`fkBatchId` NOT IN (SELECT `fkBatchId` FROM `tbl_ams_targets_reports_download_links` WHERE reportDate = "20210914"))
+)
+UNION 
+(
+SELECT * FROM `tbl_ams_report_id` WHERE reportDate = "20210914" AND reportType="Product_Targeting_SB"  
+AND (`fkBatchId` NOT IN (SELECT `fkBatchId` FROM `tbl_ams_targets_reports_download_links_sb` WHERE reportDate = "20210914"))
+)
+UNION 
+(
+SELECT * FROM `tbl_ams_report_id` WHERE reportDate = "20210914" AND reportType="Product_Targeting_SD"  
+AND (`fkBatchId` NOT IN (SELECT `fkBatchId` FROM `tbl_ams_targets_reports_download_links_sd` WHERE reportDate = "20210914"))
+)
+
+;

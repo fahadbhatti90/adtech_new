@@ -1,0 +1,7 @@
+
+1019
+
+SELECT DISTINCT t1.fkAccountID
+FROM `tbl_ams_report_id` t1
+LEFT JOIN `tbl_ams_campaigns_reports_download_links_sd` t2 ON t2.fkBatchId = t1.fkBatchId
+WHERE t2.id IS NULL AND t1.reportDate = "20210907"

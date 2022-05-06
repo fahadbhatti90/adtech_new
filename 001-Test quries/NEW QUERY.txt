@@ -1,0 +1,16 @@
+
+SELECT * FROM `tbl_ams_report_id` WHERE fkBatchId="20210908741" AND reportType = "Campaign_SB"
+SELECT * FROM `tbl_ams_report_id` WHERE fkBatchId="20210908740" AND reportType = "Campaign_SB"
+SELECT * FROM `tbl_ams_report_id` WHERE fkBatchId="20210908749" AND reportType = "Keyword_SP"
+SELECT * FROM `tbl_ams_report_id` WHERE fkBatchId="20210908749" AND reportType = "AdGroup_SD"
+SELECT * FROM `tbl_ams_report_id` WHERE fkBatchId="20210908748" AND reportType = "AdGroup_SD"
+SELECT * FROM `tbl_ams_report_id` WHERE fkBatchId="20210908700" AND reportType = "Campaign_SD"
+SELECT * FROM `tbl_ams_report_id` WHERE fkBatchId="20210908699" AND reportType = "Campaign_SD"
+SELECT * FROM `tbl_ams_report_id` WHERE fkBatchId="20210908699" AND reportType = "Campaign_SD" 
+SELECT * FROM `tbl_ams_report_id` WHERE fkBatchId="20210908473" AND reportType = "Campaign_SP"
+SELECT * FROM `tbl_ams_report_id` WHERE fkBatchId="20210908472" AND reportType = "Campaign_SP"
+SELECT * FROM `tbl_ams_report_id` WHERE fkBatchId="20210908371" AND reportType = "Keyword_SB"
+SELECT * FROM `tbl_ams_report_id` WHERE fkBatchId="20210908369" AND reportType = "Keyword_SB"
+SELECT * FROM `tbl_ams_report_id` WHERE fkBatchId="20210908278" AND reportType = "AdGroup_SB"
+SELECT * FROM `tbl_ams_report_id` WHERE fkBatchId="20210908277" AND reportType = "AdGroup_SB"
+

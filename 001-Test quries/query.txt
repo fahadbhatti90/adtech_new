@@ -1,0 +1,41 @@
+-------------------------------------------- error detail ---------------------------------------
+SELECT * FROM `tbl_ams_profile_report_status` WHERE created_at LIKE "%2021-09-09%" AND batchId LIKE "%20210908%" AND `status`!=1 batchId = "20210909649" AND adType = "AdGroup_SP"
+SELECT * FROM `tbl_ams_failed_reports_links` WHERE reportDate = "20210908"
+--------------------------------------------------------------------------------------------------------
+SELECT * FROM `tbl_account` WHERE id="747"
+745
+SELECT * FROM `tbl_ams_profiles` WHERE id=745
+SELECT * FROM `tbl_ams_report_id` WHERE fkBatchId="20210906747" AND reportType = "AdGroup_SB"
+SELECT * FROM `tbl_ams_adgroup_reports_download_links_sb` WHERE fkBatchId="20210906747"
+
+
+--------------------------------------------------------
+SELECT * FROM `tbl_account` WHERE id="759"
+757
+SELECT * FROM `tbl_ams_profiles` WHERE id=757
+SELECT * FROM `tbl_ams_report_id` WHERE fkBatchId="20210906759" AND reportType = "campaign_SD"
+SELECT * FROM `tbl_ams_campaigns_reports_download_links_sd` WHERE fkBatchId="20210906759"
+
+
+--------------------------------------------------------
+
+SELECT * FROM `tbl_ams_report_id` WHERE fkBatchId="20210909248" AND reportType = "AdGroup_SB"
+SELECT * FROM `tbl_ams_report_id` WHERE fkBatchId="20210909249" AND reportType = "AdGroup_SB"
+SELECT * FROM `tbl_ams_report_id` WHERE fkBatchId="20210909767" AND reportType = "Keyword_SB"
+SELECT * FROM `tbl_ams_report_id` WHERE fkBatchId="20210909687" AND reportType = "Campaign_SD"
+SELECT * FROM `tbl_ams_report_id` WHERE fkBatchId="20210909688" AND reportType = "Campaign_SD"
+SELECT * FROM `tbl_ams_report_id` WHERE fkBatchId="20210909744" AND reportType = "AdGroup_SD"
+SELECT * FROM `tbl_ams_report_id` WHERE fkBatchId="20210909745" AND reportType = "AdGroup_SD"
+SELECT * FROM `tbl_ams_report_id` WHERE fkBatchId="20210909422" AND reportType = "Keyword_SP"
+SELECT * FROM `tbl_ams_report_id` WHERE fkBatchId="20210909363" AND reportType = "ASINs"
+SELECT * FROM `tbl_ams_report_id` WHERE fkBatchId="20210909364" AND reportType = "ASINs"
+SELECT * FROM `tbl_ams_report_id` WHERE fkBatchId="20210909318" AND reportType = "Campaign_SB"
+SELECT * FROM `tbl_ams_report_id` WHERE fkBatchId="20210909319" AND reportType = "Campaign_SB"
+
+
+
+
+
+
+
+

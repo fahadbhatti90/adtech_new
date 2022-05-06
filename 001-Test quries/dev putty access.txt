@@ -1,0 +1,134 @@
+mail.codeinformatics.com
+
+----------------------------------putty credentials----------------
+Dev_heloTek
+172.16.20.111  Dev
+172.16.20.112  Dev Cron
+172.16.20.119  Dev API
+ Port 50683
+fahadbhatti
+F@h@dBh@tti
+
+
+    
+   sudo php artisan db:seed --class=AmsParameterTypesSeeder  
+s   sudo php artisan db:seed --class=AmsSponsordReportTypes
+s   sudo php artisan db:seed --class=AmsReportsMetricsSeeder
+
+
+open .env file:
+sudo nano .env
+clear cache :
+before
+sudo php artisan cache:clear
+old comand sudo php artisan config:clear
+sudo php artisan route:clear
+after
+sudo php artisan config:cache
+sudo php artisan route:cache
+sudo git checkout .
+git checkout -- app/Libraries/HelperFunctions.php
+sudo reboot
+check process list : ps -eo pid,lstart,cmd | grep artisan
+sudo htop
+kill prcess command : kill 0093
+
+ssl issue : sudo git config --global http.sslverify false
+		git config --global http.sslverify false
+---------------------------------------- Tana Path -------------------------------
+cd /var/www/html/TANAII-dev/TANAII/       for front
+cd /var/www/html/DevApi-TANAII/TANAII/     for api server
+
+------------------------------------------------ git lab --------------------------------------
+
+username: fahadbhatti90
+password: U1o2w3x4y5$
+------------------------------------------------ set cron on server ---------------------------
+     set cron on server
+	press i (to edit)
+     sudo crontab -e -u www-data
+	sudo crontab -l -u www-data
+
+*    * * * *  php /var/www/html/helo-tek/artisan runAmsAdvertisingEmailSchedule:cron
+vi editor is alternate to nano eidto for linux.
+nano editor commands
+ctr s =to save
+ctr x = to close
+copy =right click
+ctr s = remove line 
+
+
+------------------------------------------------ ip --------------------------------------
+
+
+Bilal Fahad Bhatti Umer 
+Dev Server
+1. https://dev.helo-tek.com/ (Frontend)
+2. https://devcron.helo-tek.com /  (Backend)
+3. https://devapi.helo-tek.com/ (API Server)
+
+
+172.16.20.111:50683 (HeloTek-dev)
+172.16.20.112:50683 (HeloTekCron-dev)
+172.16.20.119:50683 (HeloTekAPI-dev)
+
+----------------------------------------------prod url----------------------------------------------
+https://beta.helo-tek.com/
+https://cron.helo-tek.com/
+https://api.helo-tek.com/
+----------------------------------------------prod url----------------------------------------------
+
+----------------------------------------------------- Procedure -------------------------------------------------------
+
+first git pull on local dev_helotek branch
+resolve conflict if any
+git push from local branc dev_helotek to origin branch
+
+Then Open Mputty 
+login with your credentials
+then directory path cd /var/www/html/helo-tek
+cd /var/www/html/pulse-advertising
+
+
+permission comamnd: sudo chown www-data:www-data -R storage
+                    sudo chown www-data:www-data -R public/ 
+then sudo git pull on following IPs
+172.16.20.111
+172.16.20.112
+172.16.20.119
+
+pull command:
+sudo git pull
+migration command:
+sudo php artisan migrate:fresh --seed
+
+
+then update helotek codeReview sheet with your name
+
+
+172.16.20.111:50683 (HeloTek-dev)
+172.16.20.112:50683 (HeloTekCron-dev)
+172.16.20.119:50683 (HeloTekAPI-dev)
+------------------------------------------------------------------------------------------------------------------
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+
+ * Canonical Livepatch is available for installation.
+   - Reduce system reboots and improve kernel security. Activate at:
+     https://ubuntu.com/livepatch
+
+313 packages can be updated.
+0 updates are security updates.
+
+Your Hardware Enablement Stack (HWE) is supported until April 2023.
+*** System restart required ***
+Last login: Fri Aug 30 09:07:11 2019 from 172.16.20.206
+fahadbhatti@dev:~$ cd /var/www/html/helo-tek/
+fahadbhatti@dev:/var/www/html/helo-tek$ sudo git pull
+[sudo] password for fahadbhatti:
+Username for 'http://172.16.20.48': fahadbhatti90
+Password for 'http://fahadbhatti90@172.16.20.48':
+Already up to date.
+fahadbhatti@dev:/var/www/html/helo-tek$

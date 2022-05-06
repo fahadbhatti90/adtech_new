@@ -1,0 +1,7 @@
+120671 Tue Apr 26 17:22:01 2022 php /var/www/html/DevApi-TANAII/TANAII/artisan amscronjobs:recovercronlist
+121027 Tue Apr 26 17:23:01 2022 php /var/www/html/DevApi-TANAII/TANAII/artisan amscronjobs:recovercronlist
+123045 Tue Apr 26 17:28:01 2022 php /var/www/html/DevApi-TANAII/TANAII/artisan amscronjobs:recovercronlist
+
+kill 120671
+kill 121027
+kill 123045

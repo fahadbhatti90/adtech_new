@@ -1,0 +1,83 @@
+--  check which profiles reports not generated
+
+ SELECT
+NULL,
+ t4.`id` AS Account_id
+ ,t4.`fkId`AS Profile_id
+,t3.reportType
+,'20210907'
+FROM 
+(SELECT
+t2.`fkAccountId`,
+t2.`reportType`
+FROM
+(SELECT
+`profileID`,
+`reportType`,
+CONCAT(`profileID`,`reportType`) AS id1
+FROM 
+`tbl_ams_report_id`
+WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('20210907',"%Y-%m-%d")
+GROUP BY 1,2,3
+)t1
+RIGHT JOIN
+(SELECT
+a.`fkAccountId`,
+a.`reportType`
+,CONCAT(a.`profileID`,a.`reportType`) AS id2
+FROM 
+`tbl_ams_report_id` a
+JOIN `tbl_ams_profiles` b
+ON a.`profileID`=b.`profileId`
+WHERE b.isActive = 1
+AND b.type !='agency'
+AND countrycode !='MX'
+AND DATE_FORMAT(LEFT(b.creationDate,10),"%Y-%m-%d") <=DATE_FORMAT('20210907',"%Y-%m-%d")
+GROUP BY 1,2,3
+)t2
+ON (t1.id1 = t2.id2)
+WHERE t1.id1 IS NULL)t3
+JOIN 
+(SELECT `id`,`fkId` FROM `tbl_account`)t4
+ON t3.`fkAccountId`= t4.`id`
+ UNION
+ SELECT
+NULL,
+ t4.`id` AS Account_id
+ ,t4.`fkId`AS Profile_id
+,t3.reportType
+,'20210907'
+FROM 
+(SELECT
+t2.`fkAccountId`,
+t2.`reportType`
+FROM
+(SELECT
+`profileID`,
+`reportType`,
+CONCAT(`profileID`,`reportType`) AS id1
+FROM 
+`tbl_ams_report_id`
+WHERE DATE_FORMAT(reportDate,"%Y-%m-%d") = DATE_FORMAT('20210907',"%Y-%m-%d")
+GROUP BY 1,2,3
+)t1
+RIGHT JOIN
+(SELECT
+a.`fkAccountId`,
+a.`reportType`
+,CONCAT(a.`profileID`,a.`reportType`) AS id2
+FROM 
+`tbl_ams_report_id` a
+JOIN `tbl_ams_profiles` b
+ON a.`profileID`=b.`profileId`
+WHERE b.isActive = 1
+AND b.type !='agency'
+AND DATE_FORMAT(LEFT(b.creationDate,10),"%Y-%m-%d") <=DATE_FORMAT('20210907',"%Y-%m-%d")
+GROUP BY 1,2,3
+)t2
+ON (t1.id1 = t2.id2)
+WHERE t1.id1 IS NULL)t3
+JOIN 
+(SELECT `id`,`fkId` FROM `tbl_account`)t4
+ON t3.`fkAccountId`= t4.`id`
+;

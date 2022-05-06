@@ -1,0 +1,1 @@
+SELECT * FROM  tbl_ams_profile_report_status  WHERE id = "1431192"

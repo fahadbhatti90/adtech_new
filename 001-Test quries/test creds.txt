@@ -1,0 +1,15 @@
+DB_CONNECTION=mysql
+DB_HOST=172.16.20.113
+DB_PORT=3306
+DB_DATABASE=test_helotek
+DB_USERNAME=usrTesthelotek
+DB_PASSWORD=c0d3@@@@testdb
+
+---------------------------------
+
+DB_CONNECTION_DB2=mysqlDb2
+DB_HOST_DB2=172.16.20.113
+DB_PORT_DB2=3306
+DB_DATABASE_DB2=test_bi
+DB_USERNAME_DB2=usrTesthelotek
+DB_PASSWORD_DB2=c0d3@@@@testdb

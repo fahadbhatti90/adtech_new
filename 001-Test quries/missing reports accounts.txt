@@ -1,0 +1,8 @@
+105 ASINs
+181 SD_Product_Ads
+218 Product_Targeting
+217 Keyword_SB
+307 Campaign_SP
+
+
+[2021-09-16 21:17:02]
