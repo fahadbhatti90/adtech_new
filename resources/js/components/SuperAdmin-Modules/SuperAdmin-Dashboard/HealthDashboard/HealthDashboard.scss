@@ -1,0 +1,39 @@
+.healthDashbaord{
+    .healthDashbaordReportIdTables{
+        .rdt_TableBody {
+            height: 480px;
+            overflow-y: auto;
+        }
+    }
+}
+
+.healthDashbaordToolTipTables{
+    .rdt_TableBody {
+        height: 200px;
+        overflow-y: auto;
+    }
+}
+
+.healthDashbaordDataInfoTables{
+    .rdt_TableBody {
+        height: 280px;
+        overflow-y: auto;
+
+        .rdt_TableRow{
+            min-height:50px !important
+        }
+    }
+}
+
+.cls-1 {
+    fill: #559ae1;
+    opacity: 0.2;
+}
+
+.healthDashboardCardShadow {
+    box-shadow: 0 1px 7px 1px #afafaf47;
+    border: 1px solid #0000002b;
+    margin: 0 25px 25px 0 !important;
+    max-width: 22% !important;
+    border-radius: 15px;
+}

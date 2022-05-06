@@ -1,0 +1,28 @@
+<svg id="Icon_copy_3" data-name="Icon copy 3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="60" height="60" viewBox="0 0 60 60">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: #55e168;
+      }
+
+      .cls-1 {
+        opacity: 0.2;
+      }
+
+      .cls-2 {
+        stroke: #ddf9e1;
+        stroke-linejoin: round;
+        stroke-width: 1px;
+      }
+
+      .cls-3 {
+        fill: #fff;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <circle id="Circle_BG_copy" data-name="Circle BG copy" class="cls-1" cx="30" cy="30" r="30"/>
+  <image id="user_2_copy" data-name="user(2) copy" x="17" y="15" width="26" height="31" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAfCAYAAAD5h919AAAB4ElEQVRIib3Wu2tUQRTH8Y8XHxDQBDHgI0hIJ7FQiZ0mapNCGwVBEMTCQuJ/IGKjIhYBQSxErERsRPDRSKzEKoiNChZGsHBBFKKdL1COzMIWuY/ZNftrLtw55/edmTv3nFlx9MNpDbQXp7APG/Ed7/AY1/ClzqKoGR/AHTzDCWzFaqzDLpzHexyrA62sGAvDJ9hT47EWd9PzZllQ1YquNIB06jp25IJii85kQEKrcDEXdCQl5moaQzmgnV1ApG8+ngMa7BIU2pADWuwB9DkH9LJLyG+8yQHdx88uQFEpvuWAPuJqJiQmdq5ssOqHjaSnDSF/Ui1cctvqQL9wCLdqIHFwDuN2VVAVaA1+pJnuxg28Tcaf8BxnMYYHHTmNQCOpZrVSK1jAQbxA9JNtWJ9aRbSOy/iaVr6QclrJY6QMNIlXmMGm9G4snaR7mFhiohNp7FGKlXJnktdkO7Dd+LbgdVmd6lCr44NHqdlcEx+r3R6nuN2PLjWASMZ15p0aSt4nY+uGcTwjOVfhPVyk0l7VaXtVeE8HaGoZIW1NFWX94z9rPECjfQCNFj02uaYaLNLdbbk1UPTYTZtqMUDzfQDNB2i2D6DZAM2lO/RyKbzn2tX7Ag7gYdktJlPhEV77/3njL5vKUeKTvDUKAAAAAElFTkSuQmCC"/>
+  <circle class="cls-2" cx="43.5" cy="42.5" r="7.5"/>
+  <path class="cls-3" d="M1805.52,361.148l1.22,2.426s1.98-4.931,5.11-6.574a6.643,6.643,0,0,0,.15,3.443c-1.37.313-4.2,3.835-5.11,5.557a10.625,10.625,0,0,0-3.89-3.287Z" transform="translate(-1764 -319)"/>
+</svg>

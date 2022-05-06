@@ -1,0 +1,14 @@
+<svg id="Icon_copy" data-name="Icon copy" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="60" height="60" viewBox="0 0 60 60">
+    <defs>
+        <style>
+            .cls-1 {
+            fill: #fbbc39;
+            opacity: 0.2;
+            }
+        </style>
+    </defs>
+    <circle id="Circle_BG" data-name="Circle BG" class="cls-1" cx="30" cy="30" r="30"/>
+    <image id="profit-report" x="18" y="15" width="24" height="30"
+           xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAeCAYAAAA2Lt7lAAABRElEQVRIicWVMUtDMRRGT60IglQQHEXB1cGOTqKDLrq6uCg4a938B46lSwdHZ0cnEensIqi46g9wUBwcKiqB++CZJve9hAQ/eMtNcs59SSCN4fVKB+gSlx5g1i8Bjy7CWCTYjhHt5hQ0gXOXJJWgYI1IUgqcktSCEcm4Z1JbAdw5agfAlFX70gRvtXqFFrAgMNealk/wXFOwL58vxznO4E98f9BT1hylEHRyCwYhkBjBaipB9kP+t1tUlW/gwzFnOpXgAVh21H/sQuwWzQB7wA7Q0CbGCuaAPvAqXU+mFnwCW8ANcAJsxgrMQ35bAT/VAJrAwNeBjZLEBz8DXkIEBfwdGIpkoHQ+C8y7QK5rWoZfyEtlwGsyXrktmsCGb0v9UiSHIXBb4IMj3d8DiyFwSmegwYsEwwvBUw14dMwWXQETOeAAv/afRazcjCOrAAAAAElFTkSuQmCC"/>
+</svg>

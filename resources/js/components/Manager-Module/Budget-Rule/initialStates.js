@@ -1,0 +1,42 @@
+import moment from "moment";
+
+export const initialStates = {
+    ruleName: "",
+    eventName: "",
+    selectedProfile: null,
+    selectedAdType: null,
+    selectedCampaigns: null,
+    CampaignsOptions: [],
+    selectedRuleType: {
+        label: "PERFORMANCE",
+        value: 'PERFORMANCE',
+        className: 'custom-class'
+    },
+    startDateDP: moment(new Date()).format("MM-DD-YYYY"),
+    endDateDP: '',
+    isDatesDisable: true,
+    isEventSelected: true,
+    showDRP: false,
+    showDRPEnd: false,
+    dailyWeekly: "DAILY",
+    mon: false,
+    tue: false,
+    wed: false,
+    thu: false,
+    fri: false,
+    sat: false,
+    sun: false,
+    selectedMetric: null,
+    selectedCondition: null,
+    thresholdValue: "",
+    raiseBudget: "",
+    eventId: "",
+    errorStartDateDPE: '',
+    errorEndDateDPE: '',
+    recommendedData: [],
+    recommendedEvents: [],
+    totalRows: 0,
+    perPage: 10,
+    recommendedPopUp: false,
+
+}

@@ -1,0 +1,123 @@
+.login {
+    fieldset{
+        background: #f4f4f4 !important;
+    }
+    .inpAdort{
+        margin-bottom: 4px;
+    }
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+        transition: background-color 5000s ease-in-out 0s;
+        -webkit-text-fill-color: #070707 !important;
+    }
+    .loginPageLeftSide {
+        
+        #tsparticles {
+            height: 100%;
+        }
+        .ideaBulbLogo{
+            position: absolute;
+            z-index: 9999;
+            width: 200px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            .bulbInnerContainer{
+                border: 1px solid #fff6b1;
+                border-radius: 50%;
+                width: 200px;
+                height: 200px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                box-shadow: 0px 1px 4px 1px #f3e67cc9 inset, 0px 1px 3px 3px #f3e67cc9;
+                background: #f2a346;
+                animation: glowBulbBorderAnimation 2s linear 0s infinite alternate;
+
+                svg{
+                    .cls-1{
+                        fill:#fff;
+                        opacity:1
+                    }
+                    path.cls-1:nth-child(2) {
+                        fill: #ffffff53;
+                        animation: glowBulbAnimationV2 2s linear 0s infinite alternate;
+                    }
+                }
+                span{
+                    width:5px;
+                    height: 5px;
+                    background-color: #fff;
+                    position: absolute;
+                    border-radius: 50%;
+                    &:nth-child(2){
+                        top:-3px;
+                        left:50%;
+                        transform: translateX(-50%);
+                    }
+                    &:nth-child(3){
+                        top:50%;
+                        left:-3px;
+                        transform: translateY(-50%);
+                    }
+                    &:nth-child(4){
+                        top:50%;
+                        right:-3px;
+                        transform: translateY(-50%);
+                    }
+                    &:nth-child(5){
+                        bottom:-3px;
+                        left:50%;
+                        transform: translateX(-50%);
+                    }
+
+                }
+                &:before{
+                    content: "";
+                    width: 30px;
+                    height: 30px;
+                    background: transparent;
+                    display: none;
+                    position: absolute;
+                    left: 49.1%;
+                    top: 44%;
+                    transform: translate(-50%, -50%);
+                    border-radius: 50%;
+                    // transition: all 1s cubic-bezier(0.25, 0.1, 0.88, 0.24);
+                    /* box-shadow: 0px -1px 45px 9px #fff; */
+                    animation: glowBulbAnimation 2s linear 0s infinite alternate;
+                }
+                .spiralBg, .glowBg{
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100% !important;
+                    z-index: 999999999999999;
+                    display: block;
+                }
+                .spiralBg{
+                    z-index: 9999999999999999;
+                }
+            }
+            img{
+                height: 143px !important;
+            }
+        }
+    }
+}
+@keyframes glowBulbAnimation {
+    from {box-shadow: 0px 3px 29px 21px #ffffff}
+    to {box-shadow: 0px 3px 29px 10px #fff}
+}
+@keyframes glowBulbAnimationV2 {
+    from {fill: #ffffff;}
+    to {fill: #ffffff83;}
+}
+
+@keyframes glowBulbBorderAnimation {
+    from {box-shadow: 0px 1px 4px 1px #f3e67cc9 inset, 0px 1px 3px 3px #f3e67cc9;}
+    to {box-shadow: 0px 1px 1px 0.45px #f3e67cc9 inset, 0px 1px 1px 1px #f3e67cc9;}
+}

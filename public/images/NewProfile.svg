@@ -1,0 +1,12 @@
+<svg id="Icon_copy_2" data-name="Icon copy 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="60" height="60" viewBox="0 0 60 60">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #559ae1;
+        opacity: 0.2;
+      }
+    </style>
+  </defs>
+  <circle id="Circle_BG" data-name="Circle BG" class="cls-1" cx="30" cy="30" r="30"/>
+  <image id="user_2_" data-name="user(2)" x="17" y="15" width="26" height="31" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAfCAYAAAD5h919AAAB4ElEQVRIib3Wu2tUQRTH8Y+LDwhoghjwESSkk1ioxE4TtUmhjYIgCGJhIfE/ELFREYuAIClUrERsRPDRSKzEKoiNChZGsHBBFKKdL1BGzsIWuY/ZdffXXLhzzu87M3fuObPi6I0PamgvTmEfNuI73uExruFLlUWjYnwAd/AMJ7AVq7EOu3Ae73GsCrSyZCwZPsGeCo+1uBvPm0VBZSu6UgPSrjnsyAWlLTqTAUlahYu5oCORmKtpDOWAdnYAEd98PAc02CEoaUMOaKkL0Occ0MsOIb/xJgd0Hz87AKVK8S0H9BFXMyFpYueKBst+2JT0tCbkT9TCZbetCvQLh3CrApIOzmHcLgsqA63Bj5jpblzH2zD+hOc4izE8aMupBRqJmtWMVrCIg3iB09iG9dEqUuu4jK+x8sXIaYbHSBFoEq8wg03xbixO0j1MLDPRiRh7FLEidya8JluBrca3Ba+L6lSbmm0fPJWazRXxabXb0ylu9aNLNSDCuMq8XUPhfTJt3TCOZyTnKnkPN6K0l3XabpW8pxNoqoeQlqYaRf3jP2s8gUb7ABptdNnk6mqwEXe3Xmug0WU3raulBFroA2ghgWb7AJpNoPm4Q/dKyXu+Vb0v4AAeFt1iMpU8ktf+f974CzUmUkbUO3kWAAAAAElFTkSuQmCC"/>
+</svg>

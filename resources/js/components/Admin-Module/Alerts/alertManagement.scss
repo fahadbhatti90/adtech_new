@@ -1,0 +1,68 @@
+@import "./../../../../sass/variables";
+.alertManagementModule {
+  .dataTableContainer button{
+    background: white;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 5px;
+  }
+  .rdt_TableRow {
+    font-size: 12px !important;
+    color: rgba(140, 140, 140, 0.87) !important;
+    cursor: pointer;
+  }
+
+  .rdt_TableHeadRow {
+    background-color: #f1f1f1;
+  }
+
+  .rdt_TableHead {
+    .rdt_TableCol {
+      font-size: 13px !important;
+      font-weight: 500 !important;
+      color: #4c4c4cde !important;
+    }
+  }
+}
+.alertFormPopUp{
+  .alertTextField {
+    border: 1px solid #cac6c6 !important;
+
+    div:first-child {
+      border: none !important;
+      box-shadow: none !important;
+      outline: none;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
+    div:first-child input {
+      height: 15px !important;
+    }
+  }
+
+  .alertCheckBoxes{
+    .MuiFormControlLabel-label{
+     font-weight: 600;
+    }
+  }
+
+  .alertCheckBoxes > fieldset {
+    background: transparent !important;
+    //margin-right: 15px;
+
+    svg {
+      font-size: 1.2rem !important;
+      margin: 10px !important;
+    }
+
+    .MuiIconButton-colorPrimary svg {
+      color: #383a3a7a !important;
+    }
+
+    .MuiIconButton-colorPrimary.Mui-checked svg {
+      color: $primaryColor !important;
+    }
+  }
+}

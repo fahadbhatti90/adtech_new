@@ -1,0 +1,34 @@
+.bidMultiplier {
+
+}
+
+.bidMultiplier {
+  overflow: inherit !important;
+  z-index: 3500 !important;
+  .bidDatePicker {
+    input{
+      height: 1.4rem !important;
+    }
+  }
+  .CustomDateRangePicker{
+    position: relative !important;
+    bottom: 251px !important;
+  }
+  .rdrMonthAndYearPickers select{
+    display: block;
+    padding: 10px 30px 10px 10px !important;
+    border: none !important;
+    height: 3rem;
+  }
+}
+
+.bidMultiplierDateRange {
+  .MuiInput-formControl{
+    border-radius: 10px !important;
+    background: white !important;
+  }
+}
+
+.BMOverLapCampaigns{
+  z-index: 4000 !important;
+}

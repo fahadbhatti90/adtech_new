@@ -1,0 +1,71 @@
+.budgetRuleModule {
+  .dailyWeekly {
+    flex-direction: row !important;
+    margin-top: 30px !important;
+  }
+
+  .daysCheckBoxGrid > fieldset {
+    background: transparent !important;
+    margin-right: 15px;
+    margin-top: 28px !important;
+  }
+
+  .condition .conditionLabel {
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border: 1px solid #c3bdbd8c;
+   // border-right: 0;
+    display: -webkit-inline-box !important;
+    display: -webkit-inline-flex !important;
+    display: -moz-inline-box !important;
+    display: -ms-inline-flexbox !important;
+    display: inline-flex !important;
+  }
+
+  .condition .basic-single {
+    margin-top: 0;
+  }
+
+  .condition .basic-single > div {
+    border-top-left-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+  }
+   .integerNumber > .MuiFormControl-root > div{
+     margin-top: 0 !important;
+     border-top-left-radius: 0px !important;
+     border-bottom-left-radius: 0px !important;
+   }
+
+  .budgetRuleDataTable{
+    button {
+      background: white;
+      border: none;
+      cursor: pointer;
+      outline: none;
+      //color: white;
+      padding:0px !important
+    }
+    .rdt_TableHeadRow {
+      background-color: #f1f1f1 !important;
+    }
+
+    .rdt_TableHead .rdt_TableCol {
+      font-size: 13px !important;
+      font-weight: 500 !important;
+      color: #4c4c4cde !important;
+    }
+
+    .rdt_TableRow {
+      font-size: 12px !important;
+      color: rgba(140, 140, 140, 0.87) !important;
+    }
+    .MuiButton-root:hover {
+      background-color: transparent !important;
+    }
+  }
+  .recommendedBtn{
+    padding-block: unset;
+    padding-inline: revert;
+  }
+}
+

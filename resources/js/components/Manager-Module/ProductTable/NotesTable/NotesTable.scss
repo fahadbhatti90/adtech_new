@@ -1,0 +1,88 @@
+
+.infoIcon {
+    position: absolute;
+    right: -22px;
+    top: -14px;
+    font-size: 13px;
+    font-family: sans-serif;
+    font-weight: 700;
+    color: #571986;
+    border: 2px solid;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    opacity:0;
+    display: none;
+  &.active{
+     display:flex;
+  }
+
+}
+
+.notesTable {
+    background-color:#fff;
+    border:1px solid #ededed;
+    box-shadow: 0px 0px 3px 1px #b5b5b5;
+    z-index: 1;
+    max-width: 400px;
+    min-width: 330px;
+    position:absolute;
+    top:0px;
+    left:0px;
+    transition: left 0.5s ease, top 0.5s ease;
+    display:none;
+    & > svg {
+      position: absolute;
+      font-size: 3rem;
+      color: #e3e3e3;
+
+      &:not(.arrowBottom){
+        bottom: 20px;
+      }
+      &.arrowBottom{
+        bottom:-29px;
+      }
+      &.arrowLeft{
+        left: -30px;
+      }
+      &.arrowRight{
+        right: -29px;
+      }
+    }
+  .notesTableHeader{
+      display:flex;
+    & > div{
+      background-color:#ededed;
+    }
+  }
+  div.notesTableCol{
+      color:#888888;
+      border:1px solid #ededed;
+      width:100%;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding: 10px 10px;
+      font-family: system-ui;
+    
+      &:first-child {
+        max-width:30%;
+      }
+      &:last-child {
+        display:block;
+      }
+   }
+  .notesTableBody{
+    max-height:200px;
+    overflow-x:hidden;
+    overflow-y:auto;
+    
+    .notesTableBodyRow{
+      display:flex;
+    }
+  }
+}
